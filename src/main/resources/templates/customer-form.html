@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Register</title>
+</head>
+<body>
+
+    <form th:action="@{/customer/register}" th:object="${customer}" method="post">
+        <input type="hidden" th:field="*{id}">
+        First Name :<input type="text" th:field="*{firstName}" /><br>
+        Last Name :<input type="text" th:field="*{lastName}" /><br>
+        E-mail :<input type="email" th:field="*{email}" /><br>
+        Phone Number :<input type="text" th:field="*{phoneNo}" /><br>
+        City :<input type="text" th:field="*{city}" /><br>
+        Address :<input type="text" th:field="*{address}" /><br>
+
+
+        <button type="submit">Register</button>
+
+    </form>
+
+</body>
+</html>

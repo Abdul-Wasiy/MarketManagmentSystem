@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Goods List</title>
+</head>
+<body>
+<h2><a th:href="@{/good/register}">Add Good</a></h2>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Registration Date</th>
+        <th>Expire Date</th>
+
+        <th colspan="2">Action</th>
+    </tr>
+    <tr th:each="good: ${goods}">
+        <td th:text="${good.id}"></td>
+        <td th:text="${good.name}"></td>
+        <td th:text="${good.category}"></td>
+        <td th:text="${good.quantity}"></td>
+        <td th:text="${good.price}"></td>
+        <td th:text="${good.regDate}"></td>
+        <td th:text="${good.expireDate}"></td>
+
+        <td><a th:href="@{'/good/edit/'+${good.id}}">Edit</a></td>
+        <td>
+            <form th:action="@{/good/delete/{id} (id= ${good.id})}" method="post">
+                <button type="submit" onclick="return confirm('Do you want to delete the good ?')">Delete</button>
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

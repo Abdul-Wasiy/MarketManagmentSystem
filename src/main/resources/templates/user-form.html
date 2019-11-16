@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>User Register</title>
+</head>
+<body>
+
+<form th:action="@{/user/register}" th:object="${user}" method="post">
+    <input type="hidden" th:field="*{id}">
+    First Name :<input type="text" th:field="*{name}" /><br>
+    Last Name :<input type="text" th:field="*{lastName}" /><br>
+    E-mail :<input type="email" th:field="*{email}" /><br>
+    Phone Number :<input type="text" th:field="*{phoneNo}" /><br>
+    Username :<input type="text" th:field="*{userName}" /><br>
+    Password :<input type="password" th:field="*{password}" /><br>
+Roles:
+    <ul th:each="role: ${roles}">
+        <li>
+            <input type="checkbox" name="roleIds" th:value="${roles.id}">
+            <label th:text="${role.roleName}"></label>
+        </li>
+    </ul>
+Permission:
+    <input type="hidden" name="permissionIds">
+
+    <ul th:each="permission: ${permissions}">
+        <li>
+            <input type="checkbox" name="permissionIds" th:value="${permission.id}">
+            <label th:text="${permission.permissionName}"></label>
+        </li>
+    </ul>
+    <button type="submit">Register</button>
+
+</form>
+
+</body>
+</html>
